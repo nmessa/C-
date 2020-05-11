@@ -6,14 +6,14 @@
 #include "BinaryTree.h"
 using namespace std;
 
-template <class T>
-BinaryTree<T>::BinaryTree()		// Constructor
+
+BinaryTree::BinaryTree()		// Constructor
 { 
 	root = NULL; 
 }
 
-template <class T>
-BinaryTree<T>::~BinaryTree()	// Destructor
+
+BinaryTree::~BinaryTree()	// Destructor
 { 
 	destroySubTree(root); 
 }
@@ -23,8 +23,8 @@ BinaryTree<T>::~BinaryTree()	// Destructor
 // The function inserts the node into the tree pointed to by  *
 // the TreeNode pointer. This function is called recursively. *
 //*************************************************************
-template <class T>
-void BinaryTree<T>::insert(TreeNode *&nodePtr, TreeNode *&newNode)
+
+void BinaryTree::insert(TreeNode *&nodePtr, TreeNode *&newNode)
 {
 	if (nodePtr == NULL)
 		nodePtr = newNode;						// Insert the node.
@@ -39,8 +39,8 @@ void BinaryTree<T>::insert(TreeNode *&nodePtr, TreeNode *&newNode)
 // insertNode creates a new node to hold num as its value, *
 // and passes it to the insert function.                   *
 //**********************************************************
-template <class T>
-void BinaryTree<T>::insertNode(T val)
+
+void BinaryTree::insertNode(int val)
 {
 	TreeNode *newNode;		// Pointer to a new node.
 
@@ -56,8 +56,8 @@ void BinaryTree<T>::insertNode(T val)
 // destroySubTree is called by the destructor. It   *
 // deletes all nodes in the tree.                   *
 //***************************************************
-template <class T>
-void BinaryTree<T>::destroySubTree(TreeNode *nodePtr)
+
+void BinaryTree::destroySubTree(TreeNode *nodePtr)
 {
 	if (nodePtr)
 	{
@@ -74,8 +74,8 @@ void BinaryTree<T>::destroySubTree(TreeNode *nodePtr)
 // the tree. If so, the function returns true.      *
 // Otherwise, it returns false.                     *
 //***************************************************
-template <class T>
-bool BinaryTree<T>::searchNode(T val)
+
+bool BinaryTree::searchNode(int val)
 {
 	TreeNode *nodePtr = root;
 
@@ -95,8 +95,7 @@ bool BinaryTree<T>::searchNode(T val)
 // remove calls deleteNode to delete the       *
 // node whose value member is the same as num. *
 //**********************************************
-template <class T>
-void BinaryTree<T>::remove(T val)
+void BinaryTree::remove(int val)
 {
 	deleteNode(val, root);
 }
@@ -105,8 +104,8 @@ void BinaryTree<T>::remove(T val)
 // deleteNode deletes the node whose value   *
 // member is the same as num.                *
 //********************************************
-template <class T>
-void BinaryTree<T>::deleteNode(T val, TreeNode *&nodePtr)
+
+void BinaryTree::deleteNode(int val, TreeNode *&nodePtr)
 {
 	if (val < nodePtr->value)
 		deleteNode(val, nodePtr->left);
@@ -121,8 +120,8 @@ void BinaryTree<T>::deleteNode(T val, TreeNode *&nodePtr)
 // that is to be deleted. The node is removed and the       *
 // branches of the tree below the node are reattached.      *
 //***********************************************************
-template <class T>
-void BinaryTree<T>::makeDeletion(TreeNode *&nodePtr)
+
+void BinaryTree::makeDeletion(TreeNode *&nodePtr)
 {
 	TreeNode *tempNodePtr;	// Temporary pointer, used in reattaching the
 	                        // left subtree.
@@ -162,8 +161,8 @@ void BinaryTree<T>::makeDeletion(TreeNode *&nodePtr)
 // The displayInOrder member function displays the values        *
 // in the subtree pointed to by nodePtr, via inorder traversal.  *
 //****************************************************************
-template <class T>
-void BinaryTree<T>::displayInOrder(TreeNode *nodePtr)
+
+void BinaryTree::displayInOrder(TreeNode *nodePtr)
 {
 	if (nodePtr)
 	{
@@ -177,8 +176,8 @@ void BinaryTree<T>::displayInOrder(TreeNode *nodePtr)
 // The displayPreOrder member function displays the values       *
 // in the subtree pointed to by nodePtr, via preorder traversal. *
 //****************************************************************
-template <class T>
-void BinaryTree<T>::displayPreOrder(TreeNode *nodePtr)
+
+void BinaryTree::displayPreOrder(TreeNode *nodePtr)
 {
 	if (nodePtr)
 	{
@@ -192,8 +191,8 @@ void BinaryTree<T>::displayPreOrder(TreeNode *nodePtr)
 // The displayPostOrder member function displays the values      *
 // in the subtree pointed to by nodePtr, via postorder traversal.*
 //****************************************************************
-template <class T>
-void BinaryTree<T>::displayPostOrder(TreeNode *nodePtr)
+
+void BinaryTree::displayPostOrder(TreeNode *nodePtr)
 {
 	if (nodePtr)
 	{
@@ -204,22 +203,22 @@ void BinaryTree<T>::displayPostOrder(TreeNode *nodePtr)
 }
 
 // Overloaded display functions that pass the root to their overloaded counterparts
-template <class T>
-void BinaryTree<T>::displayInOrder()
+
+void BinaryTree::displayInOrder()
 {	
 	cout << "\nThe tree in order " << endl;
 	displayInOrder(root); 
 }
 
-template <class T>
-void BinaryTree<T>::displayPreOrder()
+
+void BinaryTree::displayPreOrder()
 {	
 	cout << "\nThe tree pre-order " << endl;
 	displayPreOrder(root); 
 }
 
-template <class T>
-void BinaryTree<T>::displayPostOrder()
+
+void BinaryTree::displayPostOrder()
 {	
 	cout << "\nThe tree post-order " << endl;
 	displayPostOrder(root); 
